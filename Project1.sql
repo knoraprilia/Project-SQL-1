@@ -71,7 +71,6 @@ SELECT death.continent, death.location, death.date, death.population, vaccine.ne
 FROM coviddeaths as death
 	join covidvaccinations as vaccine
 	on death.location = vaccine.location
-	and death.date = vaccine.date
 WHERE death.continent is not NULL
 ORDER BY location, date
 
