@@ -77,13 +77,13 @@ ORDER BY location, date
 
 -- Melihat banyaknya Orang yang sudah Vaksin
 SELECT death.continent, death.location, death.date, death.population, vaccine.[new_vaccinations]
-, SUM(cast(vaccine.[new_vaccinations]as float)) OVER (PARTITION BY death.location ORDER BY death.location, death.date) as BanyakOrangVaksin 
+, SUM(cast(vaccine.[new_vaccinations]as float)) OVER (PARTITION BY death.location) as BanyakOrangVaksin 
 FROM coviddeaths as death
 	join covidvaccinations as vaccine
 	on death.location = vaccine.location
 	and death.date = vaccine.date
 WHERE death.continent is not NULL
-ORDER BY location, date DESC
+ORDER BY location DESC
 
 -- Melihat Perbandingan Banyaknya orang yang sudah Vaksin
 
